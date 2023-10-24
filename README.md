@@ -1,2 +1,4 @@
-# logigramme
 Projet informatique : Mon logigramme vectoriel
+
+# Objectif du projet
+Un logigramme est la représentation graphique ou picturale d'un algorithme à l'aide de différents symboles, formes et flèches pour démontrer un processus ou un programme. Avec les algorithmes, nous pouvons facilement comprendre un programme. L'objectif principal d'un logigramme est d'analyser différents processus. Plusieurs graphiques standards sont appliqués dans un logigramme. Le logigramme permet une lecture graphique et simplifiée d’un algorithme. L’objectif de ce projet est de tracer le logigramme d’un algorithme fourni en entrée au programme. Le logigramme devra être dessiné sous un format d’image vectorielle. Une image vectorielle est une image numérique composée de plusieurs objets géométriques individuels (droites, polygones, arcs de cercle). Dans ce projet nous essayerons de développer l’image avec un codage Tikz. Tikz est un langage destiné à la production de graphiques vectoriels. Le tout sera élaboré et visualisé à travers la plateforme Overleaf, outil en ligne permettant la rédaction et la compilation de documents Tikz.
