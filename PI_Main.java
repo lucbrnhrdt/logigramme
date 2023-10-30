@@ -4,7 +4,7 @@ public class PI_Main {
   public static void main(String[] args) { 
 	String FichierAlgo="test.txt"; //variable String du nom du fichier txt de l'algorithme
 	String [] Algo = new String[100]; //on créé un tableau de 100 chaînes de caractère de façon à manipuler les lignes de l'algorithme plus facilement
-	File file = new File("CodeTikz.txt");
+	File file = new File("CodeTikz.txt"); //création d'un fichier txt en sortie (pour le code Tikz)
 	file.delete();
 	
 	/* Partie 1 : conversion du fichier txt en tableau de chaînes de caractères*/
@@ -17,13 +17,14 @@ public class PI_Main {
 		i=i+1;
 		}
     reader.close();
-    } catch (IOException e) { //si l'exception est vérifiée, alors on renvoie l'information à l'utilisateur
+    } catch (IOException e) { //si l'exception est vérifiée, alors on renvoie l'erreur à l'utilisateur
 		System.out.println("Erreur");
 	}
 	
 	/* Partie 2 : conversion des chaines de caractères en code Tikz*/
 	try {
-		BufferedWriter writer = new BufferedWriter(new FileWriter("CodeTikz.txt"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter("CodeTikz.txt")); 
+		//Début du code Tikz
 		writer.write("\\documentclass{article}");
 		writer.write("\n\\usepackage[utf8]{inputenc}");
 		writer.write("\n\\usepackage{tikz}");
@@ -33,12 +34,12 @@ public class PI_Main {
 		writer.write("\n\\tikzstyle{cercle}=[draw,circle]");
 		writer.write("\n\\begin{document}");
 		writer.write("\n\n\\begin{tikzpicture}\n");
-
 		writer.close();
 		}
 	catch (IOException e) {
 		System.out.println("Erreur");
 	}
+	System.out.println("Votre code Tikz a été généré !");
   }
 }
 		
