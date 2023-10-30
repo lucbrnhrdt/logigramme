@@ -4,6 +4,8 @@ public class PI_Main {
   public static void main(String[] args) { 
 	String FichierAlgo="test.txt"; //variable String du nom du fichier txt de l'algorithme
 	String [] Algo = new String[100]; //on créé un tableau de 100 chaînes de caractère de façon à manipuler les lignes de l'algorithme plus facilement
+	File file = new File("CodeTikz.txt");
+	file.delete();
 	
 	/* Partie 1 : conversion du fichier txt en tableau de chaînes de caractères*/
 	try { //try / catch : gestion des exceptions qui peuvent survenir (ici, le fait que le fichier n'existe pas dans le dossier parent de main.java)
@@ -16,10 +18,27 @@ public class PI_Main {
 		}
     reader.close();
     } catch (IOException e) { //si l'exception est vérifiée, alors on renvoie l'information à l'utilisateur
-		System.out.println("Le fichier n'existe pas");
+		System.out.println("Erreur");
 	}
 	
 	/* Partie 2 : conversion des chaines de caractères en code Tikz*/
-	System.out.println(Algo[0]);
+	try {
+		BufferedWriter writer = new BufferedWriter(new FileWriter("CodeTikz.txt"));
+		writer.write("\\documentclass{article}");
+		writer.write("\n\\usepackage[utf8]{inputenc}");
+		writer.write("\n\\usepackage{tikz}");
+		writer.write("\n\\usetikzlibrary{positioning,shapes.geometric}");
+		writer.write("\n\\tikzstyle{carre}=[rectangle,rounded corners,draw=red!80,fill=red!10, inner ysep=0.2cm,text width=2cm,text centered]");
+		writer.write("\n\\tikzstyle{losange}=[diamond,draw=blue!80,fill=blue!10, inner ysep=0.1cm,text width=1cm,text centered]");
+		writer.write("\n\\tikzstyle{cercle}=[draw,circle]");
+		writer.write("\n\\begin{document}");
+		writer.write("\n\n\\begin{tikzpicture}\n");
+
+		writer.close();
+		}
+	catch (IOException e) {
+		System.out.println("Erreur");
+	}
   }
 }
+		
