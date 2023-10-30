@@ -10,3 +10,4 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
+- Supprimer un fichier existant : https://docs.oracle.com/javase/tutorial/essential/io/delete.html
