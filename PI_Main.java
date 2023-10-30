@@ -34,7 +34,22 @@ public class PI_Main {
 		writer.write("\n\\tikzstyle{cercle}=[draw,circle]");
 		writer.write("\n\\begin{document}");
 		writer.write("\n\n\\begin{tikzpicture}\n");
-		writer.close();
+        writer.flush();
+		int i=0;
+		if (Algo[i]!="Début"){
+			i=i+1;
+			}
+		i=i+2;
+		int j=1;
+		if (Algo[i].startsWith("tantque")){
+			Algo[i]=Algo[i].replace("<=","$<$=");
+			Algo[i]=Algo[i].replace(">=","$>$=");
+			Algo[i]=Algo[i].replace("!=","$!$=");
+			writer.append("\n\\node[losange] (t"+j+") [below =of t"+(j-1)+"] {"+Algo[5].replace(" faire","")+"}");
+			writer.flush();
+			i=i+1;
+			j=j+1;
+			}
 		}
 	catch (IOException e) {
 		System.out.println("Erreur");
