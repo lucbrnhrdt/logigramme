@@ -5,7 +5,7 @@ public class PI_Main {
 	String FichierAlgo="test.txt"; //variable String du nom du fichier txt de l'algorithme
 	String [] Algo = new String[100]; //on créé un tableau de 100 chaînes de caractère de façon à manipuler les lignes de l'algorithme plus facilement
 	
-	/* Partie 1 : conversion du fichier txt en tableau de chaîne de caractères*/
+	/* Partie 1 : conversion du fichier txt en tableau de chaînes de caractères*/
 	try { //try / catch : gestion des exceptions qui peuvent survenir (ici, le fait que le fichier n'existe pas dans le dossier parent de main.java)
     BufferedReader reader = new BufferedReader(new FileReader(FichierAlgo)); //assignation du fichier texte d'entré à utilisé pour l'algo, en utilisant la classe BufferedReader (issu de java.io)
     String line;
