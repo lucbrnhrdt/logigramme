@@ -7,3 +7,6 @@ Un logigramme est la représentation graphique ou picturale d'un algorithme à l
 ## Travail demandé :
 Le projet consiste à programmer cet outil de génération de logigramme en Java. Le programme prend en entrée un algorithme écrit sous format textuel. L’algorithme contiendra des instructions d’entrée sortie (Lire et Ecrire), des instructions d'affectation1 et des structures conditionnelles de type si...fin si.
 Votre programme devra analyser l’algorithme et tracer le logigramme en mettant les structures conditionnelles et itératives dans des losanges et les autres instructions dans un rectangle en s’assurant du bon chaînage entre les formes géométriques. 
+
+## Sources du projet :
+Lire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
