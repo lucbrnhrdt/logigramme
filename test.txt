@@ -1,0 +1,9 @@
+Algorithme Test
+Variable i,j: entier
+Début
+i=2
+j=3
+tantque i<=20 faire
+i=i+1
+Ecrire (i)
+Fin tantque
