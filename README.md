@@ -9,7 +9,7 @@ Le projet consiste à programmer cet outil de génération de logigramme en Java
 Votre programme devra analyser l’algorithme et tracer le logigramme en mettant les structures conditionnelles et itératives dans des losanges et les autres instructions dans un rectangle en s’assurant du bon chaînage entre les formes géométriques. 
 
 ## Avancement du projet :
-### 30/10/2023 :
+#### Version du 30/10/2023 :
 - Lecture d'un fichier txt ligne par ligne, puis conversion en un tableau de chaînes de caractères.
 - Création d'un fichier txt de sortie, qui sera utilisé pour le code Tikz et régénéré à chaque exécution du code (pas de duplication).
 - Création du début du code Tikz (formatage, couleurs et taille par défaut).
