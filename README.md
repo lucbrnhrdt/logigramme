@@ -15,6 +15,10 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - Création du début du code Tikz (formatage, couleurs et taille par défaut).
 - Gestion de la structure conditionnelle "tantque".
 
+#### Version V1.1 (31/10/2023) :
+- Gestion de toutes les opérations,  variables et structures conditionnelles dans le code Tikz en sortie.
+- Affichage de tous les noeuds sur le logigramme visuel Overleaf (sans flèches/liens). 
+
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
 - Supprimer un fichier existant : https://docs.oracle.com/javase/tutorial/essential/io/delete.html
