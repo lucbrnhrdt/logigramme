@@ -1,9 +1,10 @@
 import java.io.*; //package JAVA que nous utiliserons pour lire et écrire des fichiers txt
 
 public class PI_Main {
-  public static void main(String[] args) { 
+  public static void main(String[] args) {
 	String nom_fichier;
-	System.out.println("Entrez le nom de votre fichier algorithme à convertir (en .txt) :");
+	System.out.println("\nVeuillez vérifier que le fichier algorithme est dans le même dossier que ce programme Java.");
+	System.out.println("\nEntrez le nom de votre fichier algorithme (en .txt) à convertir :");
 	nom_fichier=Lire.S();
 	String FichierAlgo=nom_fichier; //variable String du nom du fichier txt de l'algorithme
 	String [] Algo = new String[100]; //on créé un tableau de 100 chaînes de caractère de façon à manipuler les lignes de l'algorithme plus facilement
