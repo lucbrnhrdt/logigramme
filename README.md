@@ -17,7 +17,10 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 
 #### Version V1.1 (31/10/2023) :
 - Gestion de toutes les opérations,  variables et structures conditionnelles dans le code Tikz en sortie.
-- Affichage de tous les noeuds sur le logigramme visuel Overleaf. Pour le moment, sans flèches ou liens visuels. 
+- Affichage de tous les noeuds sur le logigramme visuel Overleaf. Pour le moment, sans flèches ou liens visuels.
+
+#### Version V1.2 (20/11/2023) :
+- Demande à l'utilisateur le nom du fichier texte (algorithme) à convertir en logigramme.
 
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
