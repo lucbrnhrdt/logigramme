@@ -2,7 +2,10 @@ import java.io.*; //package JAVA que nous utiliserons pour lire et écrire des f
 
 public class PI_Main {
   public static void main(String[] args) { 
-	String FichierAlgo="test.txt"; //variable String du nom du fichier txt de l'algorithme
+	String nom_fichier;
+	System.out.println("Entrez le nom de votre fichier algorithme à convertir (en .txt) :");
+	nom_fichier=Lire.S();
+	String FichierAlgo=nom_fichier; //variable String du nom du fichier txt de l'algorithme
 	String [] Algo = new String[100]; //on créé un tableau de 100 chaînes de caractère de façon à manipuler les lignes de l'algorithme plus facilement
 	File file = new File("CodeTikz.txt"); //création d'un fichier txt en sortie (pour le code Tikz)
 	file.delete();
