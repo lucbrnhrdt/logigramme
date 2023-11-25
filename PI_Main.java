@@ -36,6 +36,7 @@ public class PI_Main {
 		writer.write("\n\\tikzstyle{debfin}=[ellipse,draw,text width=2cm,text centered]");
 		writer.write("\n\\tikzstyle{carre}=[rectangle,rounded corners,draw=red!80,fill=red!10, inner ysep=0.2cm,text width=2cm,text centered]");
 		writer.write("\n\\tikzstyle{losange}=[diamond,draw=blue!80,fill=blue!10, inner ysep=0.1cm,text width=1cm,text centered]");
+		writer.write("\n\\tikzstyle{very thick}= [line width=1.2pt]");
 		writer.write("\n\\tikzstyle{cercle}=[draw,circle]");
 		writer.write("\n\\begin{document}");
 		writer.write("\n\n\\begin{tikzpicture}\n");
@@ -66,7 +67,18 @@ public class PI_Main {
 				i=i+1;
 				j=j+1;
 			} else if (Algo[i].startsWith("si")){ //gestion de la structure conditionnelle "si"
-				writer.append("\n\\node[carre] (t"+j+") [below =of t"+(j-1)+"] {"+Algo[i]+"};");
+				Algo[i]=Algo[i].replace("<=","$<$=");
+				Algo[i]=Algo[i].replace(">=","$>$=");
+				Algo[i]=Algo[i].replace("!=","$!$=");
+				writer.append("\n\\node[losange] (t"+j+") [below =of t"+(j-1)+"] {"+Algo[i].replace(" si","")+"};");
+				writer.flush();
+				i=i+1;
+				j=j+1;
+			} else if (Algo[i].startsWith("sinon")){ //gestion de la structure conditionnelle "sinon"
+				Algo[i]=Algo[i].replace("<=","$<$=");
+				Algo[i]=Algo[i].replace(">=","$>$=");
+				Algo[i]=Algo[i].replace("!=","$!$=");
+				writer.append("\n\\node[losange] (t"+j+") [below =of t"+(j-1)+"] {"+Algo[i].replace(" sinon","")+"};");
 				writer.flush();
 				i=i+1;
 				j=j+1;
@@ -93,3 +105,4 @@ public class PI_Main {
 	}
 }
 		
+
