@@ -22,6 +22,10 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 #### Version V1.2 (20/11/2023) :
 - Demande à l'utilisateur le nom du fichier texte (algorithme) à convertir en logigramme.
 
+#### Version V1.3 (30/11/2023) :
+- Conversion des parties du code en fonction JAVA.
+
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
 - Supprimer un fichier existant : https://docs.oracle.com/javase/tutorial/essential/io/delete.html
+- Fonction qui retourne un tableau : https://openclassrooms.com/forum/sujet/fonction-return-un-tableau-36255
