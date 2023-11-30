@@ -27,12 +27,10 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - Affichage de tous les noeuds sur le logigramme visuel Overleaf. Pour le moment, sans flèches ou liens visuels.
 
 #### Version V1.2 (20/11/2023) :
-- Demande à l'utilisateur le nom du fichier texte à convertir en logigramme (obsolète depuis version V1.4).
+- Demande à l'utilisateur le nom du fichier texte à convertir en logigramme (obsolète depuis version V1.3).
 
 #### Version V1.3 (26/11/2023) :
 - Conversion des parties du code en fonction JAVA.
-
-#### Version V1.4 (30/11/2023) :
 - Création d'une interface pour sélectionner manuellement le fichier source texte.
 
 ## Sources du projet :
