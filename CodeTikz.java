@@ -75,6 +75,8 @@ public class CodeTikz {
 		writer.append("\n\n\\end{tikzpicture}");
 		writer.append("\n\n\\end{document}");
 		writer.flush();
+		
+		Ouverture.ouvrirFichier("CodeTikz.txt");
 	    }
     catch (IOException e) {
 		System.out.println("Erreur");
