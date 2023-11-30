@@ -1,4 +1,4 @@
-import java.io.*; //package JAVA permettant de lire et écrire des fichiers txt
+import java.io.*; // package JAVA permettant de lire et écrire des fichiers txt
 
 /* Partie 3 : conversion des chaines de caractères en code Tikz*/
 

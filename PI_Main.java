@@ -1,4 +1,4 @@
-import java.io.*; //package JAVA permettant de lire et écrire des fichiers txt
+import java.io.*; // package JAVA permettant de lire et écrire des fichiers txt
 
 public class PI_Main {
   public static void main(String[] args) {

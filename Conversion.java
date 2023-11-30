@@ -1,4 +1,4 @@
-import java.io.*; //package JAVA permettant de lire et écrire des fichiers txt
+import java.io.*; // package JAVA permettant de lire et écrire des fichiers txt
 
 /* Partie 2 : conversion du fichier txt en tableau de chaînes de caractères*/
 

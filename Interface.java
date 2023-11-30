@@ -1,6 +1,6 @@
 import javax.swing.*; //utilisation de la classe Swing pour les interfaces graphiques
 import java.awt.event.*; //classes nécessaires pour gérer les événements d'action
-import java.io.*; //package JAVA permettant de lire et écrire des fichiers txt
+import java.io.*; // package JAVA permettant de lire et écrire des fichiers txt
 
 /* Partie 1 : sélection du fichier txt par le biais d'un explorateur de fichier*/
 
