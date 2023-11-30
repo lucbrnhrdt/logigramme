@@ -13,6 +13,8 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - Aurélien : flèches
 - Luc : sélecteur de couleur (et interface)
 
+- Si temps restant : téléchargement du visuel en PDF automatiquement
+
 ## Avancement du projet :
 #### Version V1.0 (30/10/2023) :
 - Lecture d'un fichier txt ligne par ligne, puis conversion en un tableau de chaînes de caractères.
