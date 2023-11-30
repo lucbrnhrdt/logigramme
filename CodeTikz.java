@@ -1,9 +1,10 @@
-import java.io.*;
+import java.io.*; //package JAVA permettant de lire et écrire des fichiers txt
+
+/* Partie 3 : conversion des chaines de caractères en code Tikz*/
 
 public class CodeTikz {
 	
 	public static void codetikz(String[] Algo) {
-			/* Partie 2 : conversion des chaines de caractères en code Tikz*/
 	try {
 		BufferedWriter writer = new BufferedWriter(new FileWriter("CodeTikz.txt")); 
 		//Début du code Tikz
