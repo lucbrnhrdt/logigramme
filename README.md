@@ -32,6 +32,7 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 #### Version V1.3 (30/11/2023) :
 - Conversion des parties du code en fonction JAVA.
 - Création d'une interface pour sélectionner manuellement le fichier source texte.
+- Ouverture automatique du code Tikz généré.
 
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
