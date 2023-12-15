@@ -34,6 +34,10 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - Création d'une interface pour sélectionner manuellement le fichier source texte.
 - Ouverture automatique du code Tikz généré.
 
+#### Version V1.4 (15/12/2023) :
+- Création d'un sélecteur de couleur pour choisir les couleurs pour le carré et losange.
+- Implémentation de ces couleurs dans le code Tikz.
+
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
 - Supprimer un fichier existant : https://docs.oracle.com/javase/tutorial/essential/io/delete.html
