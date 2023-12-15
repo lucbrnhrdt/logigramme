@@ -6,6 +6,8 @@ public class CodeTikz {
 	
 	public static void codetikz(String[] Algo) {
 	try {
+		int[] couleurCarre = Couleur.SelecteurCouleur("carré");
+		int[] couleurLosange = Couleur.SelecteurCouleur("losange");
 		BufferedWriter writer = new BufferedWriter(new FileWriter("CodeTikz.txt")); 
 		//Début du code Tikz
 		writer.write("\\documentclass{article}");
@@ -13,9 +15,8 @@ public class CodeTikz {
 		writer.write("\n\\usepackage{tikz}");
 		writer.write("\n\\usetikzlibrary{positioning,shapes.geometric}");
 		writer.write("\n\\tikzstyle{debfin}=[ellipse,draw,text width=2cm,text centered]");
-		writer.write("\n\\tikzstyle{carre}=[rectangle,rounded corners,draw=red!80,fill=red!10, inner ysep=0.2cm,text width=2cm,text centered]");
-		writer.write("\n\\tikzstyle{losange}=[diamond,draw=blue!80,fill=blue!10, inner ysep=0.1cm,text width=1cm,text centered]");
-		writer.write("\n\\tikzstyle{very thick}= [line width=1.2pt]");
+		writer.write("\n\\tikzstyle{carre}=[rectangle,rounded corners,draw={rgb,255:red,"+couleurCarre[0]+"; green,"+couleurCarre[1]+"; blue,"+couleurCarre[2]+"}, draw opacity = 0.8, fill={rgb,255:red,"+couleurCarre[0]+"; green,"+couleurCarre[1]+"; blue,"+couleurCarre[2]+"}, fill opacity=0.1, text opacity = 1, inner ysep=0.2cm,text width=2cm,text centered]");
+		writer.write("\n\\tikzstyle{losange}=[diamond,draw={rgb,255:red,"+couleurLosange[0]+"; green,"+couleurLosange[1]+"; blue,"+couleurLosange[2]+"}, draw opacity = 0.8, fill={rgb,255:red,"+couleurLosange[0]+"; green,"+couleurLosange[1]+"; blue,"+couleurLosange[2]+"}, fill opacity=0.1, text opacity = 1, inner ysep=0.1cm,text width=1cm,text centered]");
 		writer.write("\n\\tikzstyle{cercle}=[draw,circle]");
 		writer.write("\n\\begin{document}");
 		writer.write("\n\n\\begin{tikzpicture}\n");
@@ -76,7 +77,7 @@ public class CodeTikz {
 		writer.append("\n\n\\end{document}");
 		writer.flush();
 		
-		Ouverture.ouvrirFichier("CodeTikz.txt");
+		Ouverture.ouvrirFichier("CodeTikz.txt"); // fonction qui ouvre automatiquement le fichier txt du Code Tikz généré
 	    }
     catch (IOException e) {
 		System.out.println("Erreur");
