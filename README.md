@@ -38,7 +38,7 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - Création d'un sélecteur de couleur pour choisir les couleurs pour le carré et losange.
 - Implémentation de ces couleurs dans le code Tikz.
 
-#### Version V1.4 (17/12/2023) :
+#### Version V1.5 (17/12/2023) :
 - Création des flèches entre les blocs d'intructions
 - Début de création des flèches contourant depuis le "tantque"
 
