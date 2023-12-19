@@ -3,9 +3,9 @@ Variable i,j: entier
 Début
 i=2
 j=3
-si i<=20 alors
+tantque i<=20 alors
 i=i+1
-Ecrire (2i)
-sinon
 Ecrire (i)
 Fin tantque
+i=i
+Fin
