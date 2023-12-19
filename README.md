@@ -42,6 +42,9 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - Création des flèches entre les blocs d'intructions
 - Début de création des flèches contourant depuis le "tantque"
 
+#### Version V1.5 (17/12/2023) :
+- Flèches fonctionnelles pour le "tantque"
+  
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
 - Supprimer un fichier existant : https://docs.oracle.com/javase/tutorial/essential/io/delete.html
