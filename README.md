@@ -42,7 +42,7 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - Création des flèches entre les blocs d'intructions
 - Début de création des flèches contourant depuis le "tantque"
 
-#### Version V1.5 (17/12/2023) :
+#### Version V1.6 (19/12/2023) :
 - Flèches fonctionnelles pour le "tantque"
   
 ## Sources du projet :
