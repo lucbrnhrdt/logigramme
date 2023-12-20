@@ -44,6 +44,9 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 
 #### Version V1.6 (19/12/2023) :
 - Flèches fonctionnelles pour le "tantque"
+
+#### Version V1.6 (19/12/2023) :
+- insérer le "non" à côté de la flèche du "tantque"
   
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
