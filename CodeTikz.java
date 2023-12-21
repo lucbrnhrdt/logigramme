@@ -14,6 +14,7 @@ public class CodeTikz {
 			writer.write("\\documentclass{article}\n" +
                          "\\usepackage[utf8]{inputenc}\n" +
                          "\\usepackage{tikz}\n" +
+                         "\\usepackage{calc}\n" +
                          "\\usetikzlibrary{positioning,shapes.geometric}\n" +
                          "\\tikzstyle{debfin}=[ellipse,draw,text width=2cm,text centered]\n" +
                          "\\tikzstyle{carre}=[rectangle,rounded corners,draw={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, draw opacity = 0.8, fill={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, fill opacity=0.1, text opacity = 1, inner ysep=0.2cm,text width=2cm,text centered]\n" +
@@ -26,11 +27,15 @@ public class CodeTikz {
 
             int i = 0;
             int j = 1;
+            int compt =0;
             int aux = 0;
             int temp = 0;
             int temp1= 0;
             int temp2= 0;
             int temp3= 0;
+            int tempsinon=0;
+            int tempsinon2=0;
+            int tempsinon3=0;
             String[][] relations = new String[Algo.length][2];// Création d'une liste pour stocker les relations entre les blocs
 
 // Partie 1 : Traduction des blocs
@@ -64,11 +69,11 @@ public class CodeTikz {
         i++;
         j++;
         
-    } else if (Algo[i].startsWith("si")) {
+    } else if (Algo[i].startsWith("Si")) {
         Algo[i] = Algo[i].replace("<=", "$<$=");
         Algo[i] = Algo[i].replace(">=", "$>$=");
         Algo[i] = Algo[i].replace("!=", "$!$=");
-        writer.append("\n\\node[losange] (t" + j + ") [below =of t" + (j - 1) + "] {" + Algo[i].replace(" si", "") + "};");
+        writer.append("\n\\node[losange] (t" + j + ") [below =of t" + (j - 1) + "] {" + Algo[i].replace(" Si", "") + "};");
         temp = j;
         writer.flush();
         relations[j - 1][0] = "t" + (j - 1);
@@ -76,14 +81,35 @@ public class CodeTikz {
         i++;
         j++;
     } else if (Algo[i].startsWith("sinon")) {
-        writer.append("\n\\node[losange] (t" + j + ") [below right =of t" + temp + "] {" + Algo[i].replace(" sinon", "") + "};");
+		compt=(j-1);
+		Algo[i] = Algo[i].replace("<=", "$<$=");
+        Algo[i] = Algo[i].replace(">=", "$>$=");
+        Algo[i] = Algo[i].replace("!=", "$!$="); 
+        writer.append("\n\\node[losange] (t" + j + ") [right = 8em of t" + (temp+1) + "] {" + Algo[i].replace(" sinon", "") + "};");
+        tempsinon=j;
         writer.flush();
-        relations[temp][1] = "t" + j;
+        relations[j - 1][0] = "t" + (j - 1);
+        relations[j - 1][1] = "t" + j;
         i++;
         j++;
-    } else if ((Algo[i].startsWith("Fin si")) || (Algo[i].startsWith("Fin tantque"))) {
+    } else if ((Algo[i].startsWith("Fin tantque"))) {
+		i++;
+    } else if ((Algo[i].startsWith("Fin si"))){
+		writer.append("\n\\node (t" + j + ") at (t"+tempsinon+".south -| t"+temp+".south) {};");
+		writer.flush();
+		relations[j - 1][0] = "t" + (j - 1);
+        relations[j - 1][1] = "t" + j;
+        tempsinon2=j;
         i++;
-    } else if (Algo[i].startsWith("Fin")) {
+        j++;
+        writer.append("\n\\node (t" + j + ") [below =of t" + (j - 1) + "] {};");
+        writer.flush();
+        j++;
+        writer.append("\n\\node (t" + j + ") [below =of t" + (j - 1) + "] {};");
+        writer.flush();
+        tempsinon3=j;
+        j++;
+    }  else if (Algo[i].startsWith("Fin")) {
         writer.append("\n\\node[cercle] (t" + j + ") [below =of t" + (j - 1) + "] {\\textbullet};");
         writer.flush();
         relations[j - 1][0] = "t" + (j - 1);
@@ -104,6 +130,8 @@ public class CodeTikz {
 	i=0;
 	j=1;
 	int exclu=0;
+	int exclu1=0;
+	int exclu2=0;
 	
 	if (!Algo[i].equals("Début")) {  // Chercher ligne par ligne pour trouver le début de l'algortithme à traduire
 		i++;
@@ -122,22 +150,42 @@ public class CodeTikz {
         j++;
         
     } else if (Algo[i].startsWith("si")) {
+		writer.append("\n\\node(aux"+aux+") [above = 4em of t"+(compt+1)+"]{};");
+        temp2 = aux;
+        aux++;
+        writer.append("\n\\node(aux"+aux+") [left = 3em of t"+j+"]{};");
+        aux++;
         i++;
         j++;
     } else if (Algo[i].startsWith("sinon")) {
+		writer.append("\n\\node(aux"+aux+") [below = 4em of t"+j+"]{};");
+		aux++;
+		
         i++;
         j++;
-    } else if ((Algo[i].startsWith("Fin si")) || (Algo[i].startsWith("Fin tantque"))) {
+    } else if (Algo[i].startsWith("Fin tantque")) {
         writer.append("\n\\node(aux"+aux+") [right = 4em of t"+j+"]{};");
         aux++;
         writer.append("\n\\node(aux"+aux+") [left = 4em of t"+(j-1)+"]{};");
         temp3 = aux;
         aux++;
-        writer.append("\n\\draw[->] (t" + temp1 +".east)|- (aux"+ temp2 +".center)node[pos=1.3,align=center]{non}|- (aux"+ (temp2+2) +".center)|- (t" + j + ".east);");
+        writer.append("\n\\draw[->] (t" + temp1 +".east)|- (aux"+ temp2 +".center)|- (aux"+ (temp2+2) +".center)|- (t" + j + ".east);");
         writer.append("\n\\draw[->] (t" + (j-1) +".west)|- (aux"+ temp3 +".center)|- (aux"+ (temp2+1) +".center)|- (t" + temp1 + ".west);");
         exclu = j;
         writer.flush();
         i++;
+        
+    } else if (Algo[i].startsWith("Fin si")) {
+		writer.append("\n\\node(aux"+tempsinon2+") [below = 2em of t"+(tempsinon2-1)+"]{};");
+		aux++;
+		writer.append("\n\\node(aux"+(compt+1)+") [above = 2em of t"+(tempsinon3+1)+"]{};");
+		aux++;
+		writer.append("\n\\draw[->] (t" + (tempsinon2-1) +".south)|- (aux"+ (tempsinon2) +".center)|- (aux"+ (compt+1) +".center);");
+		writer.append("\n\\draw[->] (t" +temp+".east)|- (aux"+ (temp2) +".center)|- (t"+ (tempsinon) +".north);");
+       exclu = j;
+ 		i++;
+  
+  
     } else {
 		i++;
 		j++;
