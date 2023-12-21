@@ -81,8 +81,8 @@ public class CodeTikz {
         i++;
         j++;
     } else if (Algo[i].startsWith("sinon")) {
-		compt=(j-1);
-		Algo[i] = Algo[i].replace("<=", "$<$=");
+	compt=(j-1);
+	Algo[i] = Algo[i].replace("<=", "$<$=");
         Algo[i] = Algo[i].replace(">=", "$>$=");
         Algo[i] = Algo[i].replace("!=", "$!$="); 
         writer.append("\n\\node[losange] (t" + j + ") [right = 8em of t" + (temp+1) + "] {" + Algo[i].replace(" sinon", "") + "};");
