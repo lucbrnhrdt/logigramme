@@ -169,7 +169,7 @@ public class CodeTikz {
         writer.append("\n\\node(aux"+aux+") [left = 4em of t"+(j-1)+"]{};");
         temp3 = aux;
         aux++;
-        writer.append("\n\\draw[->] (t" + temp1 +".east)|- (aux"+ temp2 +".center)|- (aux"+ (temp2+2) +".center)|- (t" + j + ".east);");
+        writer.append("\n\\draw[->] (t" + temp1 +".east)|- (aux"+ temp2 +".center)node[pos=1.3,align=center]{non}|- (aux"+ (temp2+2) +".center)|- (t" + j + ".east);");
         writer.append("\n\\draw[->] (t" + (j-1) +".west)|- (aux"+ temp3 +".center)|- (aux"+ (temp2+1) +".center)|- (t" + temp1 + ".west);");
         exclu = j;
         writer.flush();
@@ -180,7 +180,7 @@ public class CodeTikz {
 		aux++;
 		writer.append("\n\\node(aux"+(compt+1)+") [above = 2em of t"+(tempsinon3+1)+"]{};");
 		aux++;
-		writer.append("\n\\draw[->] (t" + (tempsinon2-1) +".south)|- (aux"+ (tempsinon2) +".center)node[pos=1.3,align=center]{non}|- (aux"+ (compt+1) +".center);");
+		writer.append("\n\\draw[->] (t" + (tempsinon2-1) +".south)|- (aux"+ (tempsinon2) +".center)|- (aux"+ (compt+1) +".center);");
 		writer.append("\n\\draw[->] (t" +temp+".east)|- (aux"+ (temp2) +".center)|- (t"+ (tempsinon) +".north);");
        exclu = j;
  		i++;
