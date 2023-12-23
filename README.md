@@ -50,6 +50,10 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 
 #### Version V1.7 (21/12/2023) :
 - début du "si-sinon"
+
+#### Version V1.8 (23/12/2023) :
+- "si-sinon" presque fonctionnel
+- début de : possibilité de différentes structures conditionnelles
   
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
