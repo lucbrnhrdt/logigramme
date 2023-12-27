@@ -54,6 +54,12 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 #### Version V1.8 (23/12/2023) :
 - "si-sinon" presque fonctionnel
 - début de : possibilité de différentes structures conditionnelles
+
+#### Version V1.9 (27/12/2023) :
+- "si-sinon" fonctionnel (normalement)
+- début de : possibilité de différentes structures conditionnelles
+- amélioration du "si" et "tantque" : possible de mettre autant d'instructions que l'on veut pour chaque (aussi bien avant, dedans ou après la condition)
+  -> a améliorer : pas encore top de combiner "si" et "tantque"
   
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
