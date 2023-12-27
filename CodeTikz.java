@@ -86,7 +86,6 @@ public class CodeTikz {
                     writer.append("\n\\node[losange] (t" + j + ") [right =of t" + (tempsi + 1) + "] {" + Algo[i].replace(" sinon", "") + "};");
                     tempsinon = j;
                     writer.flush();
-
                     i++;
                     j++;
                     relations[tempsi][1] = "t" + (tempsi + 1);
@@ -99,28 +98,46 @@ public class CodeTikz {
                         i++;
                         j++;
                     } else if (tempsinon == 0) {
-                        relations[j - 1][0] = "t" + (j - 1);
-                        relations[j - 1][1] = "t" + j;
-                        i++;
-
+						if (tempfinsi==(tempfin-1)){
+							relations[j - 1][0] = "t" + (j - 1);
+							relations[j - 1][1] = "t" + j;
+							i++;
+						}else if (tempfinsi!=(tempfin-1)){
+							writer.append("\n\\node (t" + j + ") [below =of t" + (j - 1) + "]{};");
+							
+							i++;
+							j++;
+					}
+                       
                     }
                 } else if (Algo[i].startsWith("Fin tantque")) {
                     tempfintantque = j;
                     i++;
+                   
                 } else if (Algo[i].startsWith("Fin")) {
-                    writer.append("\n\\node[cercle] (t" + j + ") [below =of t" + (j - 1) + "] {\\textbullet};");
+					tempfin = j;
+					if (tempfin == (tempfinsi+1)){
+						writer.append("\n\\node[cercle] (t" + (tempfinsi+1) + ") [below =of t" + tempfinsi + "] {\\textbullet};");
+						writer.flush();
+                    } else if (tempfin == (tempfinsi+1)){
+						writer.append("\n\\node[cercle] (t" + (tempfintantque+1) + ") [below =of t" + tempfintantque + "] {\\textbullet};");
+						writer.flush();
+                    }else {
+					writer.append("\n\\node[cercle] (t" + j + ") [below =of t" + (j - 1) + "] {\\textbullet};");
                     writer.flush();
-                    tempfin = j;
-
-                    if ((tempsi != 0) && (tempsinon != 0) && (tempfin == (tempfinsi + 1))) {
-                        writer.append("\n\\draw[->] (t" + (tempsinon - 1) + ".south) to (t" + (tempfin) + ".north);");
+                    
+                    if ((tempsi != 0) && (tempsinon != 0) && (tempfin == (tempfinsi +1))) {
+                        writer.append("\n\\draw[->] (t" + (tempsinon - 1) + ".south) to (t" + (tempfinsi+1) + ".north);");
 
                     } else if ((tempsi != 0) && (tempsinon != 0) && (tempfin != (tempfinsi + 1))) {
-                        writer.append("\n\\draw[->] (t" + (tempsinon - 1) + ".south) to (t" + (tempfinsi + 1) + ".north);");
-                        relations[j - 1][0] = "t" + (j - 1);
-                        relations[j - 1][1] = "t" + j;
+                        writer.append("\n\\draw[->] (t" + (tempsinon - 1) + ".south) to (t" + (tempfin) + ");");
+                        
                     }
-
+                    if ((tempsi != 0) && (tempsinon == 0) && (tempfin == (tempfinsi + 1))) {
+                        writer.append("\n\\draw[->] (t" + (tempfinsi - 1) + ".south) to (t" + (tempfin) + ");");
+                        
+                    }
+}
                     i++;
                     j++;
                 } else {
@@ -132,11 +149,13 @@ public class CodeTikz {
                     j++;
                 }
             }
+		
 
             // Partie 2 : Gestion des exclusions
             i = 0;
             j = 1;
             int exclu = 0;
+            int exclutantque = 0;
 
             if (!Algo[i].equals("Début")) { // Chercher ligne par ligne pour trouver le début de l'algortithme à traduire
                 i++;
@@ -169,14 +188,21 @@ public class CodeTikz {
                         writer.append("\n\\node(aux" + aux + ") [below = 3em of t" + j + "]{};");
                         writer.append("\n\\draw[-] (t" + (tempfinsi - 1) + ".south) |- (aux" + aux + ".center)|- (t" + (tempfinsi + 1) + ".center);");
                         aux++;
+                        exclu = (j + 1);
+                        writer.flush();
                     }
                     if (tempsinon == 0) {
                         writer.append("\n\\node(aux" + aux + ") [right = 3em of t" + tempsi + "]{};");
                         aux++;
                         writer.append("\n\\node(aux" + aux + ") [right = 3em of t" + tempfinsi + "]{};");
                         aux++;
-                        writer.append("\n\\draw[->] (t" + tempsi + ".east) |- (aux" + (aux - 2) + ".center)node[pos=1.3,align=center]{non}|- (aux" + (aux - 1) + ".center)|- (t" + tempfinsi + ".east);");
+                        writer.append("\n\\draw[->] (t" + tempsi + ".east) |- (aux" + (aux - 2) + ".center)node[pos=1.3,align=center]{non}|- (aux" + (aux - 1) + ".center)|- (t" + tempfinsi + ".center);");
                         aux++;
+                        writer.append("\n\\node(aux" + aux + ") [below = 3em of t" + j + "]{};");
+                        writer.append("\n\\draw[->] (t" + (tempfinsi - 1) + ".south) to (t" + (tempfinsi + 1) + ".north);");
+                        aux++;
+                        exclu = (j + 1);
+                        writer.flush();
                     }
                     i++;
                     j++;
@@ -188,9 +214,10 @@ public class CodeTikz {
                     aux++;
                     writer.append("\n\\draw[->] (t" + temptantque + ".east)|- (aux" + temp2 + ".center)node[pos=1.3,align=center]{non}|- (aux" + (temp2 + 2) + ".center)|- (t" + tempfintantque + ".east);");
                     writer.append("\n\\draw[->] (t" + (tempfintantque - 1) + ".west)|- (aux" + temp3 + ".center)|- (aux" + (temp2 + 1) + ".center)|- (t" + temptantque + ".west);");
-                    exclu = (j + 1);
+                    exclutantque = j;
                     writer.flush();
                     i++;
+                    j++;
                 } else {
                     i++;
                     j++;
@@ -198,7 +225,21 @@ public class CodeTikz {
             }
 
             // Partie 3 : Dessin des flèches
-            if (exclu != 0) {
+            if (exclutantque != 0) {
+                for (int k = 0; k < (exclutantque-1); k++) {
+                    if (relations[k][0] != null && relations[k][1] != null) {
+                        writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
+                    }
+                }
+                if ((temptantque!=0)&&(tempfintantque!=(tempfin))){
+					for (int k = (exclutantque); k < j; k++) {
+						if (relations[k][0] != null && relations[k][1] != null) {
+							writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
+                    }
+                }
+				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
+			}
+            }else if (exclu != 0) {
                 for (int k = 0; k < (exclu - 1); k++) {
                     if (relations[k][0] != null && relations[k][1] != null) {
                         writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
@@ -208,7 +249,7 @@ public class CodeTikz {
                     if (relations[k][0] != null && relations[k][1] != null) {
                         writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
                     }
-                }
+                }    
             } else {
                 for (int k = 0; k < j; k++) {
                     if (relations[k][0] != null && relations[k][1] != null) {
@@ -216,6 +257,11 @@ public class CodeTikz {
                     }
                 }
             }
+            if ((tempsi!=0)&&(tempsinon==0)&&(tempfinsi!=(tempfin-1))){
+				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
+			}
+			
+				
 
             // Fin du code Tikz
             writer.append("\n\n\\end{tikzpicture}");
