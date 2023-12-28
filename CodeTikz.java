@@ -29,8 +29,8 @@ public class CodeTikz {
                     "\\begin{document}\n\n" +
                     "\\begin{tikzpicture}\n");
             writer.flush();
-
-            int i = 0;
+            
+			int i = 0;
             int j = 1;
             int aux = 0;
             int tempsi = 0;
@@ -38,8 +38,12 @@ public class CodeTikz {
             int tempfinsi = 0;
             int temptantque = 0;
             int tempfintantque = 0;
+            int temppour = 0;
+            int tempfinpour = 0;
             int temp2 = 0;
             int temp3 = 0;
+            int temp4 = 0;
+            int temp5 = 0;
             int tempfin = 0;
             String[][] relations = new String[Algo.length][2]; // Création d'une liste pour stocker les relations entre les blocs
 
@@ -67,6 +71,17 @@ public class CodeTikz {
                     Algo[i] = Algo[i].replace(">=", "$>$=");
                     Algo[i] = Algo[i].replace("!=", "$!$=");
                     temptantque = j;
+                    writer.append("\n\\node[losange] (t" + j + ") [below =of t" + (j - 1) + "] {" + Algo[i].replace(" faire", "") + "};");
+                    writer.flush();
+                    relations[j - 1][0] = "t" + (j - 1);
+                    relations[j - 1][1] = "t" + j;
+                    i++;
+                    j++;
+                 } else if ((Algo[i].startsWith("Pour")) || (Algo[i].startsWith("pour"))) {
+                    Algo[i] = Algo[i].replace("<=", "$<$=");
+                    Algo[i] = Algo[i].replace(">=", "$>$=");
+                    Algo[i] = Algo[i].replace("!=", "$!$=");
+                    temppour = j;
                     writer.append("\n\\node[losange] (t" + j + ") [below =of t" + (j - 1) + "] {" + Algo[i].replace(" faire", "") + "};");
                     writer.flush();
                     relations[j - 1][0] = "t" + (j - 1);
@@ -115,6 +130,9 @@ public class CodeTikz {
                     }
                 } else if ((Algo[i].startsWith("Fin tantque")) || (Algo[i].startsWith("Fin Tantque"))) {
                     tempfintantque = j;
+                    i++;
+                 } else if ((Algo[i].startsWith("Fin Pour")) || (Algo[i].startsWith("Fin pour"))) {
+                    tempfinpour = j;
                     i++;
                    
                 } else if ((Algo[i].startsWith("Fin")) || (Algo[i].startsWith("fin"))) {
@@ -174,8 +192,15 @@ public class CodeTikz {
                     aux++;
                     writer.flush();
                     i++;
+                } else if ((Algo[i].startsWith("Pour")) || (Algo[i].startsWith("pour"))) {
+                    writer.append("\n\\node(aux" + aux + ") [right = 4em of t" + temppour + "]{};");
+                    temp4 = aux;
+                    aux++;
+                    writer.append("\n\\node(aux" + aux + ") [left = 3em of t" + temppour + "]{};");
+                    aux++;
+                    writer.flush();
+                    i++;
                     j++;
-
                 } else if ((Algo[i].startsWith("Si") || Algo[i].startsWith("si"))) {
                     i++;
                     j++;
@@ -217,6 +242,19 @@ public class CodeTikz {
                     aux++;
                     writer.append("\n\\draw[->] (t" + temptantque + ".east)|- (aux" + temp2 + ".center)node[pos=1.3,align=center]{non}|- (aux" + (temp2 + 2) + ".center)|- (t" + tempfintantque + ".east);");
                     writer.append("\n\\draw[->] (t" + (tempfintantque - 1) + ".west)|- (aux" + temp3 + ".center)|- (aux" + (temp2 + 1) + ".center)|- (t" + temptantque + ".west);");
+                    exclutantque = j;
+                    writer.flush();
+                    i++;
+                    j++;
+                   j++;
+				  } else if ((Algo[i].startsWith("Fin Pour")) || (Algo[i].startsWith("Fin pour"))) {
+                    writer.append("\n\\node(aux" + aux + ") [right = 3em of t" + tempfinpour + "]{};");
+                    aux++;
+                    writer.append("\n\\node(aux" + aux + ") [left = 4em of t" + (tempfinpour - 1) + "]{};");
+                    temp5 = aux;
+                    aux++;
+                    writer.append("\n\\draw[->] (t" + temppour + ".east)|- (aux" + temp4 + ".center)node[pos=1.3,align=center]{non}|- (aux" + (temp4 + 2) + ".center)|- (t" + tempfinpour + ".east);");
+                    writer.append("\n\\draw[->] (t" + (tempfinpour - 1) + ".west)|- (aux" + temp5 + ".center)|- (aux" + (temp4 + 1) + ".center)|- (t" + temppour + ".west);");
                     exclutantque = j;
                     writer.flush();
                     i++;
