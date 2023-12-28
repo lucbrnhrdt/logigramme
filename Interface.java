@@ -7,6 +7,7 @@ import java.io.*; // package JAVA permettant de lire et écrire des fichiers txt
 public class Interface {
 
     public static String i() {
+		
         JFrame frame = new JFrame("Sélection fichier algorithme (.txt)"); //création d'une fenêtre pop-up
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 

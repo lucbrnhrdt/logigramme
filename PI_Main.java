@@ -14,6 +14,5 @@ public class PI_Main {
 	CodeTikz.codetikz(Algo); //fonction qui convertit l'algorithme initial en code Tikz
 	 
 	System.out.println("Votre code Tikz a été généré !");
-
 	}
 }

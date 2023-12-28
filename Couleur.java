@@ -14,6 +14,7 @@ public class Couleur {
         if (selectedColor != null) {
             int[] RGB = new int[]{selectedColor.getRed(), selectedColor.getGreen(), selectedColor.getBlue()};
             return RGB;
+            
         } else {
             return null;
         }

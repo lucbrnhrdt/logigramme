@@ -5,6 +5,7 @@ import java.io.*; // package JAVA permettant de lire et écrire des fichiers txt
 public class CodeTikz {
 
     public static void codetikz(String[] Algo) {
+		
         try {
 			// Sélection des couleurs pour les blocs
             int[] couleurCarre = Couleur.SelecteurCouleur("carré");

@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class Taille {
 
 	public static double SelecteurTaille(String forme) {
+		
         // Créer le slider
         JSlider slider = new JSlider(JSlider.HORIZONTAL, 5, 15, 10);
         slider.setMajorTickSpacing(5);

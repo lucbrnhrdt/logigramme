@@ -21,6 +21,7 @@ public class Conversion {
     } catch (IOException e) { //si l'exception est vérifiée, alors on renvoie l'erreur à l'utilisateur
 		System.out.println("Erreur");
 	}
+	
 	return Algo;
 }
 }

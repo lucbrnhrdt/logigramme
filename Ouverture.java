@@ -6,6 +6,7 @@ public class Ouverture {
 
     public static void ouvrirFichier(String chemin) {
         try {
+			
             File fichier = new File(chemin);
             if (!fichier.exists()) {
                 System.out.println("Le fichier spécifié n'existe pas : " + chemin);
