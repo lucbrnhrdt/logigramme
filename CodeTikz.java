@@ -8,7 +8,9 @@ public class CodeTikz {
         try {
 			// Sélection des couleurs pour les blocs
             int[] couleurCarre = Couleur.SelecteurCouleur("carré");
+            double tailleCarre = Taille.SelecteurTaille("carré");
             int[] couleurLosange = Couleur.SelecteurCouleur("losange");
+            double tailleLosange = Taille.SelecteurTaille("losange");
             
             // Création d'un BufferedWriter pour écrire dans le fichier CodeTikz.txt
             BufferedWriter writer = new BufferedWriter(new FileWriter("CodeTikz.txt"));
@@ -20,8 +22,8 @@ public class CodeTikz {
                     "\\usepackage{calc}\n" +
                     "\\usetikzlibrary{positioning,shapes.geometric}\n" +
                     "\\tikzstyle{debfin}=[ellipse,draw,text width=2cm,text centered]\n" +
-                    "\\tikzstyle{carre}=[rectangle,rounded corners,draw={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, draw opacity = 0.8, fill={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, fill opacity=0.1, text opacity = 1, inner ysep=0.2cm,text width=2cm,text centered]\n" +
-                    "\\tikzstyle{losange}=[diamond,draw={rgb,255:red," + couleurLosange[0] + "; green," + couleurLosange[1] + "; blue," + couleurLosange[2] + "}, draw opacity = 0.8, fill={rgb,255:red," + couleurLosange[0] + "; green," + couleurLosange[1] + "; blue," + couleurLosange[2] + "}, fill opacity=0.1, text opacity = 1, inner ysep=0.1cm,text width=1cm,text centered]\n" +
+                    "\\tikzstyle{carre}=[rectangle,rounded corners,draw={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, draw opacity = 0.8, fill={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, fill opacity=0.1, text opacity = 1, inner ysep=0.2cm,text width=2cm,text centered,scale="+tailleCarre+"]\n" +
+                    "\\tikzstyle{losange}=[diamond,draw={rgb,255:red," + couleurLosange[0] + "; green," + couleurLosange[1] + "; blue," + couleurLosange[2] + "}, draw opacity = 0.8, fill={rgb,255:red," + couleurLosange[0] + "; green," + couleurLosange[1] + "; blue," + couleurLosange[2] + "}, fill opacity=0.1, text opacity = 1, inner ysep=0.1cm,text width=1cm,text centered,scale="+tailleLosange+"]\n" +
                     "\\tikzstyle{cercle}=[draw,circle]\n" +
                     "\\begin{document}\n\n" +
                     "\\begin{tikzpicture}\n");
@@ -47,19 +49,19 @@ public class CodeTikz {
             i++;
 
             while (Algo[i] != null) {
-                if ((Algo[i].startsWith("Début"))) {
+                if ((Algo[i].startsWith("Début") || Algo[i].startsWith("début"))) {
                     writer.append("\n\\node[debfin] (t" + j + ") {" + Algo[i] + "};");
                     writer.flush();
                     i++;
                     j++;
-                } else if ((Algo[i].startsWith("Lire")) || (Algo[i].startsWith("Ecrire"))) {
+                } else if ((Algo[i].startsWith("Lire")) || (Algo[i].startsWith("lire")) || (Algo[i].startsWith("Ecrire")) || (Algo[i].startsWith("ecrire"))) {
                     writer.append("\n\\node[carre] (t" + j + ") [below =of t" + (j - 1) + "] {" + Algo[i] + "};");
                     writer.flush();
                     relations[j - 1][0] = "t" + (j - 1);
                     relations[j - 1][1] = "t" + j;
                     i++;
                     j++;
-                } else if (Algo[i].startsWith("tantque")) {
+                } else if ((Algo[i].startsWith("Tantque")) || (Algo[i].startsWith("tantque"))) {
                     Algo[i] = Algo[i].replace("<=", "$<$=");
                     Algo[i] = Algo[i].replace(">=", "$>$=");
                     Algo[i] = Algo[i].replace("!=", "$!$=");
@@ -71,7 +73,7 @@ public class CodeTikz {
                     i++;
                     j++;
 
-                } else if (Algo[i].startsWith("Si")) {
+                } else if ((Algo[i].startsWith("Si")) || (Algo[i].startsWith("si"))) {
                     Algo[i] = Algo[i].replace("<=", "$<$=");
                     Algo[i] = Algo[i].replace(">=", "$>$=");
                     Algo[i] = Algo[i].replace("!=", "$!$=");
@@ -82,14 +84,14 @@ public class CodeTikz {
                     relations[j - 1][1] = "t" + j;
                     i++;
                     j++;
-                } else if (Algo[i].startsWith("sinon")) {
+                } else if ((Algo[i].startsWith("Sinon")) || (Algo[i].startsWith("sinon"))) {
                     writer.append("\n\\node[losange] (t" + j + ") [right =of t" + (tempsi + 1) + "] {" + Algo[i].replace(" sinon", "") + "};");
                     tempsinon = j;
                     writer.flush();
                     i++;
                     j++;
                     relations[tempsi][1] = "t" + (tempsi + 1);
-                } else if (Algo[i].startsWith("Fin si")) {
+                } else if ((Algo[i].startsWith("Fin Si")) || (Algo[i].startsWith("Fin si"))) {
                     tempfinsi = j;
                     if (tempsinon != 0) {
                         writer.append("\n\\node (t" + j + ") at (t" + (tempfinsi - 1) + ".south -| t" + (tempsinon - 1) + ".south) {};");
@@ -110,11 +112,11 @@ public class CodeTikz {
 					}
                        
                     }
-                } else if (Algo[i].startsWith("Fin tantque")) {
+                } else if ((Algo[i].startsWith("Fin tantque")) || (Algo[i].startsWith("Fin Tantque"))) {
                     tempfintantque = j;
                     i++;
                    
-                } else if (Algo[i].startsWith("Fin")) {
+                } else if ((Algo[i].startsWith("Fin")) || (Algo[i].startsWith("fin"))) {
 					tempfin = j;
 					if (tempfin == (tempfinsi+1)){
 						writer.append("\n\\node[cercle] (t" + (tempfinsi+1) + ") [below =of t" + tempfinsi + "] {\\textbullet};");
@@ -163,7 +165,7 @@ public class CodeTikz {
             i++;
 
             while (Algo[i] != null) {
-                if (Algo[i].startsWith("tantque")) {
+                if ((Algo[i].startsWith("Tantque")) || (Algo[i].startsWith("tantque"))) {
                     writer.append("\n\\node(aux" + aux + ") [right = 4em of t" + temptantque + "]{};");
                     temp2 = aux;
                     aux++;
@@ -173,17 +175,17 @@ public class CodeTikz {
                     i++;
                     j++;
 
-                } else if (Algo[i].startsWith("Si")) {
+                } else if ((Algo[i].startsWith("Si") || Algo[i].startsWith("si"))) {
                     i++;
                     j++;
-                } else if (Algo[i].startsWith("sinon")) {
+                } else if ((Algo[i].startsWith("Sinon") || Algo[i].startsWith("sinon"))) {
                     writer.append("\n\\node(aux" + aux + ") [above = 4em of t" + j + "]{};");
                     writer.append("\n\\draw[->] (t" + tempsi + ".east)|- (aux" + aux + ".center)node[pos=1.2,align=center]{non}|- (t" + tempsinon + ".north);");
                     writer.flush();
                     aux++;
                     i++;
                     j++;
-                } else if (Algo[i].startsWith("Fin si")) {
+                } else if ((Algo[i].startsWith("Fin Si") || Algo[i].startsWith("Fin si"))) {
                     if (tempsinon != 0) {
                         writer.append("\n\\node(aux" + aux + ") [below = 3em of t" + j + "]{};");
                         writer.append("\n\\draw[-] (t" + (tempfinsi - 1) + ".south) |- (aux" + aux + ".center)|- (t" + (tempfinsi + 1) + ".center);");
@@ -206,7 +208,7 @@ public class CodeTikz {
                     }
                     i++;
                     j++;
-                } else if (Algo[i].startsWith("Fin tantque")) {
+                } else if ((Algo[i].startsWith("Fin tantque") || Algo[i].startsWith("Fin Tantque"))) {
                     writer.append("\n\\node(aux" + aux + ") [right = 3em of t" + tempfintantque + "]{};");
                     aux++;
                     writer.append("\n\\node(aux" + aux + ") [left = 4em of t" + (tempfintantque - 1) + "]{};");
