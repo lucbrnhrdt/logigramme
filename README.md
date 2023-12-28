@@ -60,6 +60,10 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - début de : possibilité de différentes structures conditionnelles
 - amélioration du "si" et "tantque" : possible de mettre autant d'instructions que l'on veut pour chaque (aussi bien avant, dedans ou après la condition)
   -> a améliorer : pas encore top de combiner "si" et "tantque"
+
+#### Version V2.0 (28/12/2023) :
+- bouton "slider" pour la taille des éléments
+- corrections de bugs dans la fonction CodeTikz (sensibilité à la case lors de la détection des lignes de l'algo txt)
   
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
