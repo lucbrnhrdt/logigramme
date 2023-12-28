@@ -8,13 +8,6 @@ Un logigramme est la représentation graphique ou picturale d'un algorithme à l
 Le projet consiste à programmer cet outil de génération de logigramme en Java. Le programme prend en entrée un algorithme écrit sous format textuel. L’algorithme contiendra des instructions d’entrée sortie (Lire et Ecrire), des instructions d'affectation1 et des structures conditionnelles de type si...fin si.
 Votre programme devra analyser l’algorithme et tracer le logigramme en mettant les structures conditionnelles et itératives dans des losanges et les autres instructions dans un rectangle en s’assurant du bon chaînage entre les formes géométriques. 
 
-## Répartition du projet :
-- Victor : fonctions (selon, si/sinon)
-- Aurélien : flèches
-- Luc : sélecteur de couleur (et interface)
-
-- Si temps restant : téléchargement du visuel en PDF automatiquement
-
 ## Avancement du projet :
 #### Version V1.0 (30/10/2023) :
 - Lecture d'un fichier txt ligne par ligne, puis conversion en un tableau de chaînes de caractères.
