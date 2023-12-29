@@ -62,6 +62,7 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - amélioration du "si sinon" pour qu'il fonctionne selon différentes instructions
 - création d'une partie pouvant gérer l'instuction "pour"
 - amélioration du "si", "tantque" et "pour"
+- possible de mettre un "pour" dans un "tantque" (ou inversement), uniquement s'il n'y a qu'une condition entre eux et à la fin des conditions
 
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
