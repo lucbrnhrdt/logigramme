@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{calc}
+\usetikzlibrary{positioning,shapes.geometric}
+\tikzstyle{debfin}=[ellipse,draw,text width=2cm,text centered]
+\tikzstyle{carre}=[rectangle,rounded corners,draw={rgb,255:red,255; green,153; blue,153}, draw opacity = 0.8, fill={rgb,255:red,255; green,153; blue,153}, fill opacity=0.1, text opacity = 1, inner ysep=0.2cm,text width=2cm,text centered,scale=1.0]
+\tikzstyle{losange}=[diamond,draw={rgb,255:red,0; green,51; blue,255}, draw opacity = 0.8, fill={rgb,255:red,0; green,51; blue,255}, fill opacity=0.1, text opacity = 1, inner ysep=0.1cm,text width=1cm,text centered,scale=1.0]
+\tikzstyle{cercle}=[draw,circle]
+\begin{document}
+
+\begin{tikzpicture}
+
+\node[debfin] (t1) {Début};
+\node[carre] (t2) [below =of t1] {i=2};
+\node[carre] (t3) [below =of t2] {j=3};
+\node[losange] (t4) [below =of t3] {pour i$<$=20};
+\node[carre] (t5) [below =of t4] {i=i+1};
+\node[losange] (t6) [below =of t5] {tantque i$<$=20};
+\node[carre] (t7) [below =of t6] {i=i+1};
+\node[carre] (t8) [below =of t7] {Ecrire(i)};
+\node[carre] (t9) [below =of t8] {Ecrire(i)};
+\node[carre] (t10) [below =of t9] {Lire(i)};
+\node[cercle] (t11) [below =of t10] {\textbullet};
+\node(aux0) [right = 4em of t6]{};
+\node(aux1) [left = 4em of t6]{};
+\node(aux2) [right = 3em of t9]{};
+\node(aux3) [left = 4em of t8]{};
+\draw[->] (t6.east)|- (aux0.center)node[pos=1.3,align=center]{non}|- (aux2.center)|- (t9.east);
+\draw[->] (t8.west)|- (aux3.center)|- (aux1.center)|- (t6.west);
+\node(aux4) [right = 8em of t4]{};
+\node(aux5) [left = 8em of t4]{};
+\node(aux6) [right = 7em of t10]{};
+\node(aux7) [left = 8em of t9]{};
+\draw[->] (t4.east)|- (aux4.center)node[pos=1.3,align=center]{non}|- (aux6.center)|- (t10.east);
+\draw[->] (t9.west)|- (aux7.center)|- (aux5.center)|- (t4.west);
+\draw[->] (t1) to (t2);
+\draw[->] (t2) to (t3);
+\draw[->] (t3) to (t4);
+\draw[->] (t4) to (t5);
+\draw[->] (t5) to (t6);
+\draw[->] (t10) to (t11);
+
+\end{tikzpicture}
+
+\end{document}
