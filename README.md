@@ -57,7 +57,12 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 #### Version V2.0 (28/12/2023) :
 - bouton "slider" pour la taille des éléments
 - corrections de bugs dans la fonction CodeTikz (sensibilité à la case lors de la détection des lignes de l'algo txt)
-  
+
+#### Version V2.2 (29/12/2023) :
+- amélioration du "si sinon" pour qu'il fonctionne selon différentes instructions
+- création d'une partie pouvant gérer l'instuction "pour"
+- amélioration du "si", "tantque" et "pour"
+
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
 - Supprimer un fichier existant : https://docs.oracle.com/javase/tutorial/essential/io/delete.html
