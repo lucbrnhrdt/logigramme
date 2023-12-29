@@ -413,7 +413,7 @@ public class CodeTikz {
 			
 			
 			
-			if ((exclutantque != 0) && (exclupour != 0) && (temppour<temptantque)){
+			else if ((exclutantque != 0) && (exclupour != 0) && (temppour<temptantque)){
                 for (int k = 0; k < (exclupour-3); k++) {
 					for ( k = 0; k < (exclutantque-3); k++) {
                     if (relations[k][0] != null && relations[k][1] != null) {
