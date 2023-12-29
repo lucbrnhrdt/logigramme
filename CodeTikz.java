@@ -22,8 +22,8 @@ public class CodeTikz {
                     "\\usepackage{calc}\n" +
                     "\\usetikzlibrary{positioning,shapes.geometric}\n" +
                     "\\tikzstyle{debfin}=[ellipse,draw,text width=2cm,text centered]\n" +
-                    "\\tikzstyle{carre}=[rectangle,rounded corners,draw={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, draw opacity = 0.8, fill={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, fill opacity=0.1, text opacity = 1, inner ysep=0.2cm,text width=2cm,text centered]\n" +
-                    "\\tikzstyle{losange}=[diamond,draw={rgb,255:red," + couleurLosange[0] + "; green," + couleurLosange[1] + "; blue," + couleurLosange[2] + "}, draw opacity = 0.8, fill={rgb,255:red," + couleurLosange[0] + "; green," + couleurLosange[1] + "; blue," + couleurLosange[2] + "}, fill opacity=0.1, text opacity = 1, inner ysep=0.1cm,text width=1cm,text centered]\n" +
+                    "\\tikzstyle{carre}=[rectangle,rounded corners,draw={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, draw opacity = 0.8, fill={rgb,255:red," + couleurCarre[0] + "; green," + couleurCarre[1] + "; blue," + couleurCarre[2] + "}, fill opacity=0.1, text opacity = 1, inner ysep=0.2cm,text width=2cm,text centered,scale="+tailleCarre+"]\n" +
+                    "\\tikzstyle{losange}=[diamond,draw={rgb,255:red," + couleurLosange[0] + "; green," + couleurLosange[1] + "; blue," + couleurLosange[2] + "}, draw opacity = 0.8, fill={rgb,255:red," + couleurLosange[0] + "; green," + couleurLosange[1] + "; blue," + couleurLosange[2] + "}, fill opacity=0.1, text opacity = 1, inner ysep=0.1cm,text width=1cm,text centered,scale="+tailleLosange+"]\n" +
                     "\\tikzstyle{cercle}=[draw,circle]\n" +
                     "\\begin{document}\n\n" +
                     "\\begin{tikzpicture}\n");
@@ -408,6 +408,56 @@ public class CodeTikz {
                 }
 				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
 			}
+		}
+			
+			
+			
+			
+			if ((exclutantque != 0) && (exclupour != 0) && (temppour<temptantque)){
+                for (int k = 0; k < (exclupour-3); k++) {
+					for ( k = 0; k < (exclutantque-3); k++) {
+                    if (relations[k][0] != null && relations[k][1] != null) {
+                        writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
+                    }
+                }
+                if ((temptantque!=0)&&(tempfintantque!=(tempfin))){
+					for ( k = (exclutantque+2); k < j; k++) {
+						for ( k = (exclutantque+2); k < j; k++) {
+						if (relations[k][0] != null && relations[k][1] != null) {
+							writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
+                    }
+                }
+				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
+			}
+		}
+	}
+}
+			else if ((exclutantque != 0) && (exclupour != 0) && (temppour>temptantque)){
+                for (int k = 0; k < (exclutantque-3); k++) {
+					for ( k = 0; k < (exclupour-3); k++) {
+                    if (relations[k][0] != null && relations[k][1] != null) {
+                        writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
+                    }
+                }
+                if ((temppour!=0)&&(tempfinpour!=(tempfin))){
+					for ( k = (exclutantque+2); k < j; k++) {
+						for ( k = (exclupour+2); k < j; k++) {
+						if (relations[k][0] != null && relations[k][1] != null) {
+							writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
+                    }
+                }
+				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
+			}
+		}
+	}
+
+			
+			
+			
+			
+			
+			
+			
 			} else if (exclu != 0) {
                 for (int k = 0; k < (exclu - 1); k++) {
                     if (relations[k][0] != null && relations[k][1] != null) {
@@ -445,3 +495,4 @@ public class CodeTikz {
         }
     }
 }
+			
