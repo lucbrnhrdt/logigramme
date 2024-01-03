@@ -64,6 +64,11 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - amélioration du "si", "tantque" et "pour"
 - possible de mettre un "pour" dans un "tantque" (ou inversement), uniquement s'il n'y a qu'une condition entre eux et à la fin des conditions
 
+#### Version V2.3 (03/01/2024) :
+- Corrections de quelques erreures pour tracer correctement les flèches du "si-sinon"
+- Corrections de quelques erreures pour tracer correctement les flèches des "pour" et "tantque" imbriqués
+- Ajout d'annotations
+
 ## Sources du projet :
 - Lire et écrire un fichier texte (.txt) ligne par ligne : https://www.youtube.com/watch?v=ScUJx4aWRi0
 - Supprimer un fichier existant : https://docs.oracle.com/javase/tutorial/essential/io/delete.html
