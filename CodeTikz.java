@@ -112,14 +112,15 @@ public class CodeTikz {
                     
                 } else if ((Algo[i].startsWith("Fin Si")) || (Algo[i].startsWith("Fin si"))) {
                     tempfinsi = j;
-                    if ((tempsinon != 0) && ((tempfinsi-tempsinon)>((tempsinon-1)-(tempsi)))) {
-                        writer.append("\n\\node (t" + j + ") at (t" + (tempfinsi - 1) + ".south -| t" + (tempsinon - 1) + ".south) {};");
+                    //Tester quelle est la colonne la plus grande entre celle du "si" et celle du "sinon"
+                    if ((tempsinon != 0) && ((tempfinsi-tempsinon)>((tempsinon-1)-(tempsi)))) {		//Si colonne de "sinon" la plus grande
+                        writer.append("\n\\node (t" + j + ") at (t" + (tempfinsi - 1) + ".south -| t" + (tempsinon - 1) + ".south) {};");	//Placer position auxiliaire au niveau du dessous de la colonne du"sinon"
                         j++;
                         writer.append("\n\\node (t" + j + ") [below =of t" + (j - 1) + "]{};");
                         i++;
                         j++;
-                    } else if ((tempsinon != 0) && ((tempfinsi-tempsinon)<=((tempsinon-1)-(tempsi)))) {  
-						writer.append("\n\\node (t" + j + ") at (t" + (tempsinon - 1) + ".south) {};");
+                    } else if ((tempsinon != 0) && ((tempfinsi-tempsinon)<=((tempsinon-1)-(tempsi)))) {		//Si colonne du "si" la plus grande 
+						writer.append("\n\\node (t" + j + ") at (t" + (tempsinon - 1) + ".south) {};");		//Placer position auxiliaire au niveau du dessous de la colonne du"si"
                         j++;
 						writer.append("\n\\node (t" + j + ") [below =of t" + (j - 1) + "]{};");
                         i++;
@@ -133,9 +134,8 @@ public class CodeTikz {
 							writer.append("\n\\node (t" + j + ") [below =of t" + (j - 1) + "]{};");
 							i++;
 							j++;
+						}
 					}
-                       
-                    }
                 } else if ((Algo[i].startsWith("Fin tantque")) || (Algo[i].startsWith("Fin Tantque"))) {
                     tempfintantque = j;
                     i++;
@@ -157,14 +157,14 @@ public class CodeTikz {
 						writer.flush();
                     
                     if ((tempsi != 0) && (tempsinon != 0) && (tempfin == (tempfinsi +1))) {
-                        writer.append("\n\\draw[->] (t" + (tempsinon - 1) + ".south) to (t" + (tempfinsi+1) + ".north);");
+                        writer.append("\n\\draw[->] (t" + (tempsinon - 1) + ".south) to (t" + (tempfinsi+1) + ".north);");		// Tracer la flèche du dernier bloc du "si-sinon" jusqu'au bloc de la fin
 
                     } else if ((tempsi != 0) && (tempsinon != 0) && (tempfin != (tempfinsi + 1))) {
-                        writer.append("\n\\draw[->] (t" + (tempsinon - 1) + ".south) to (t" + (tempfin) + ");");
+                        writer.append("\n\\draw[->] (t" + (tempsinon - 1) + ".south) to (t" + (tempfinsi+2) + ");");	// Tracer la flèche du dernier bloc du "si-sinon" jusqu'au bloc qui suit le "fin si"
                         
                     }
                     if ((tempsi != 0) && (tempsinon == 0) && (tempfin == (tempfinsi + 1))) {
-                        writer.append("\n\\draw[->] (t" + (tempfinsi - 1) + ".south) to (t" + (tempfin) + ");");
+                        writer.append("\n\\draw[->] (t" + (tempfinsi - 1) + ".south) to (t" + (tempfin) + ");");	// Tracer la flèche du dernier bloc du "si" jusqu'au bloc qui suit le "fin si"
                         
                     }
 				}
@@ -380,7 +380,7 @@ public class CodeTikz {
             }
 
             // Partie 3 : Dessin des flèches
-            if ((exclutantque != 0) && (exclupour == 0)){
+            if ((exclutantque != 0) && (exclupour == 0)){	//Tracer les flèches principales du "tantque" seul
                 for (int k = 0; k < (exclutantque-1); k++) {
                     if (relations[k][0] != null && relations[k][1] != null) {
                         writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
@@ -394,7 +394,7 @@ public class CodeTikz {
                 }
 				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
 			}
-			} else if ((exclupour != 0) && (exclutantque == 0)) {
+			} else if ((exclupour != 0) && (exclutantque == 0)) {	//Tracer les flèches principales du "pour" seul
                 for (int k = 0; k < (exclupour-1); k++) {
                     if (relations[k][0] != null && relations[k][1] != null) {
                         writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
@@ -409,54 +409,44 @@ public class CodeTikz {
 				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
 			}
 		}
-			
-			
-			
-			
-			else if ((exclutantque != 0) && (exclupour != 0) && (temppour<temptantque)){
-                for (int k = 0; k < (exclupour-3); k++) {
-					for ( k = 0; k < (exclutantque-3); k++) {
-                    if (relations[k][0] != null && relations[k][1] != null) {
-                        writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
-                    }
-                }
-                if ((temptantque!=0)&&(tempfintantque!=(tempfin))){
-					for ( k = (exclutantque+2); k < j; k++) {
-						for ( k = (exclutantque+2); k < j; k++) {
-						if (relations[k][0] != null && relations[k][1] != null) {
-							writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
-                    }
-                }
-				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
-			}
-		}
-	}
-}
-			else if ((exclutantque != 0) && (exclupour != 0) && (temppour>temptantque)){
+
+			else if ((exclutantque != 0) && (exclupour != 0) && (temppour<temptantque)){	//Tracer les flèches principales du "pour" si un "tantque" est imbriqué à l'intérieur
                 for (int k = 0; k < (exclutantque-3); k++) {
 					for ( k = 0; k < (exclupour-3); k++) {
                     if (relations[k][0] != null && relations[k][1] != null) {
                         writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
                     }
                 }
-                if ((temppour!=0)&&(tempfinpour!=(tempfin))){
-					for ( k = (exclutantque+2); k < j; k++) {
-						for ( k = (exclupour+2); k < j; k++) {
+                if ((temptantque!=0)&&(tempfintantque!=(tempfin))){
+						for ( k = (exclupour-1); k < j; k++) {
 						if (relations[k][0] != null && relations[k][1] != null) {
 							writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
-                    }
                 }
-				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
+		}
+				if (tempfinpour!=(tempfin)){
+					writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
+				}
 			}
 		}
 	}
-
-			
-			
-			
-			
-			
-			
+			else if ((exclutantque != 0) && (exclupour != 0) && (temppour>temptantque)){	//Tracer les flèches principales du "tantque" si un "pour" est imbriqué à l'intérieur
+                for (int k = 0; k < (exclupour-3); k++) {
+					for ( k = 0; k < (exclutantque-3); k++) {
+                    if (relations[k][0] != null && relations[k][1] != null) {
+                        writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
+                    }
+                }
+                if ((temppour!=0)&&(tempfinpour!=(tempfin))){
+					for ( k = (exclupour+2); k < j; k++) {
+						if (relations[k][0] != null && relations[k][1] != null) {
+							writer.append("\n\\draw[->] (" + relations[k][0] + ") to (" + relations[k][1] + ");");
+                }
+			}
+				if (tempfintantque!=(tempfin)){
+					writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
+				}
+		}
+	}
 			
 			} else if (exclu != 0) {
                 for (int k = 0; k < (exclu - 1); k++) {
@@ -476,7 +466,10 @@ public class CodeTikz {
                     }
                 }
             }
-            if ((tempsi!=0)&&(tempsinon==0)&&(tempfinsi!=(tempfin-1))){
+            if ((tempsi!=0)&&(tempsinon==0)&&(tempfinsi!=(tempfin-1))){		// Tracer la flèche allant du dernier bloc au bloc de fin après un "si"
+				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
+			}
+			if ((tempsi!=0)&&(tempsinon!=0)&&(tempfinsi!=(tempfin-1))){		// Tracer la flèche allant du dernier bloc au bloc de fin après un "si-sinon"
 				writer.append("\n\\draw[->] (t" + (tempfin-1) + ") to (t" + (tempfin) + ");");
 			}
 			
