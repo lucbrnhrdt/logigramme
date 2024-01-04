@@ -13,7 +13,7 @@ Votre programme devra analyser l’algorithme et tracer le logigramme en mettant
 - Lecture d'un fichier txt ligne par ligne, puis conversion en un tableau de chaînes de caractères.
 - Création d'un fichier txt de sortie, qui sera utilisé pour le code Tikz et régénéré à chaque exécution du code (pas de duplication).
 - Création du début du code Tikz (formatage, couleurs et taille par défaut).
-- Gestion de la structure conditionnelle "tantque".
+- Gestion des blocs d'instructions de la structure conditionnelle "tantque".
 
 #### Version V1.1 (31/10/2023) :
 - Gestion de toutes les opérations,  variables et structures conditionnelles dans le code Tikz en sortie.
