@@ -125,6 +125,7 @@ public class CodeTikz {
 						writer.append("\n\\node (t" + j + ") [below =of t" + (j - 1) + "]{};");
                         i++;
                         j++;  
+                    //S'occuper du "si" seul
                     } else if (tempsinon == 0) {
 						if (tempfinsi==(tempfin-1)){
 							relations[j - 1][0] = "t" + (j - 1);
