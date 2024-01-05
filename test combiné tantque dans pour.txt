@@ -1,0 +1,16 @@
+Algorithme Test
+Variable i,j: entier
+Début
+i=2
+tantque i<=20
+i=i+1
+Lire(i)
+pour i<=10
+i=i+2
+Lire(i)
+Ecrire(i)
+Fin pour
+Ecrire(i)
+Fin tantque
+Ecrire(i)
+Fin

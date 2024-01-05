@@ -1,0 +1,15 @@
+Algorithme Test
+Variable i,j: entier
+Début
+i=2
+Si i<=20
+i=i+1
+Lire(i)
+Ecrire(i)
+Fin si
+Pour i=20
+i=i+10
+Lire(i)
+Fin pour
+Ecrire(i)
+Fin
